@@ -27,21 +27,12 @@ describe('throwError', () => {
 
 describe('throwCustomError', () => {
   test('should throw custom error', () => {
-    try {
-      throwCustomError();
-    } catch (error) {
-      expect(error).toBeInstanceOf(MyAwesomeError);
-      expect(error instanceof Error && error.message).toBe(
-        'This is my awesome custom error!',
-      );
-    }
+    expect(() => throwCustomError()).toThrowError(MyAwesomeError);
   });
 });
 
 describe('rejectCustomError', () => {
   test('should reject custom error', () => {
-    expect(rejectCustomError).rejects.toThrowError(
-      'This is my awesome custom error!',
-    );
+    expect(rejectCustomError).rejects.toThrowError(MyAwesomeError);
   });
 });
